@@ -8,8 +8,14 @@ module.exports = function(grunt) {
         },
         watch: '.'
       }
+    },
+    execute: {
+      target: {
+        src: ['main.js']
+      }
     }
   });
+  grunt.loadNpmTasks("grunt-execute");
   grunt.loadNpmTasks("grunt-ts");
-  grunt.registerTask("default", ["ts"]);
+  grunt.registerTask("default", ["execute"]);
 };

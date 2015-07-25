@@ -1,3 +1,4 @@
+/// <reference path="../typings/tsd.d.ts" />
 var assert = require('assert');
 var TingoDB = require('tingodb')().Db;
 var Promise = require('promise');
@@ -16,6 +17,7 @@ var insert = function (data) {
 exports.search = function (query) {
     query = query || {};
     var findPromise = collection.find(query, function (err, item) {
+        //assert.equal(null, err);
         console.log('[find] ... ');
     });
     console.log('Find promise: ', findPromise);
@@ -34,9 +36,11 @@ var initDummyData = function () {
         url: 'http://def.com',
         behavior: 'default'
     }];
+    //console.log('Objects ', objects);
     insert(objects).then(function (data) {
         console.log('THEN ', data);
     });
 };
 initDummyData();
+//search({behavior:'default'});
 //# sourceMappingURL=store-tingodb.js.map
